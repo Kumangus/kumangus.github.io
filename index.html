@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta goods="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>綠生活 拾久舖 銷貨紀錄表</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>th {cursor: pointer;}   </style>
+</head>
+<body>
+    <table class="table table-border table-dark" ng-app="myapp" ng-controller="orderByCtrl">
+        <thead class="thead-light">
+            <tr>
+                <th ng-click="col='num';desc=!desc">   編號    </th>
+                <th ng-click="col='goods';desc=!desc">  品名    </th>
+                <th ng-click="col='buyer';desc=!desc">  購買者  </th>
+                <th ng-click="col='points';desc=!desc">    累積付費    </th>
+                <th ng-click="col='price';desc=!desc">  已結清  </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="d in data|orderBy:col:desc">
+                <!--td ng-bind="$index+1"></td-->
+                <td ng-bind="d.num"></td>
+                <td ng-bind="d.goods"></td>
+                <td ng-bind="d.buyer"></td>
+                <td ng-bind="d.points"></td>
+                <td ng-bind="d.price"></td>
+            </tr>
+        </tbody>
+    </table>
+<!--顯示資料-->            
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+<script>
+    var app = angular.module('myapp', []);
+    app.controller('orderByCtrl', function($scope) {
+        $scope.col = 'goods';
+        $scope.desc = 0;
+        $scope.data = [{
+            num: 'AR-12',
+            goods: '龍柏',
+            buyer: '王百祿',
+            points: 26,
+            price: 3.0
+        }, {
+            num: 'AQ-55',
+            goods: '貓頭鷹木雕',
+            buyer: '王博士',
+            points: 24,
+            price: 2.8
+        }, {
+            num: 'AS-77',
+            goods: '金屬茶盤杯組',
+            buyer: '王析KI',
+            points: 20,
+            price: 1.5
+        }, {
+            num: 'AA-02',
+            goods: '招財貓',
+            buyer: '沈小安',
+            points: 22,
+            price: 0.6
+        }];
+    })
+</script>
+<!--畫面-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
